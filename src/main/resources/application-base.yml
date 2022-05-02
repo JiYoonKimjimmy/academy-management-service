@@ -1,0 +1,17 @@
+# server
+server:
+  port: 10010
+  servlet:
+    context-path: /ams
+
+# spring
+spring:
+  # jpa
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
