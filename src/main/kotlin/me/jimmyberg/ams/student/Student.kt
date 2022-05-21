@@ -1,5 +1,6 @@
 package me.jimmyberg.ams.student
 
+import me.jimmyberg.ams.common.BaseEntity
 import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -25,9 +26,5 @@ class Student(
     @Column(name = "GRADE")
     val grade: Char,
     @Column(name = "STATUS")
-    val status: String,
-    @Column(name = "CREATED")
-    val created: LocalDateTime,
-    @Column(name = "UPDATED")
-    val updated: LocalDateTime
-)
+    val status: String
+) : BaseEntity()
