@@ -7,7 +7,8 @@ class StudentService(
     val studentRepository: StudentRepository
 ) {
 
-    fun findOne(id: Int): Student = studentRepository.findById(id).orElseThrow()
-    fun findAll(): List<Student> = studentRepository.findAll()
+    fun findOne(id: Int): StudentModel = studentRepository.findById(id).map(StudentModel::of).orElseThrow()
+
+    fun findAll(): List<StudentModel> = studentRepository.findAll().map(StudentModel::of)
 
 }
