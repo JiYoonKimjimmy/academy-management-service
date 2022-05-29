@@ -1,7 +1,6 @@
 package me.jimmyberg.ams.student
 
 import me.jimmyberg.ams.common.BaseEntity
-import java.time.LocalDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -10,6 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "STUDENTS")
 class Student(
+
     @Id
     @Column(name = "ID")
     val id: Int,
@@ -27,4 +27,5 @@ class Student(
     val grade: Char,
     @Column(name = "STATUS")
     val status: String
+
 ) : BaseEntity()
