@@ -4,6 +4,7 @@ import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -19,7 +20,7 @@ class StudentController(
         response = FindStudentResponse::class
     )
     @GetMapping("/student/{id}")
-    fun findOne(@PathVariable id: Int) = studentService.findOne(id)
+    fun findOne(@PathVariable id: Int) = studentService.findOne(id = id)
 
     @ApiOperation(
         value = "학생 다건 조회 API",
@@ -27,5 +28,11 @@ class StudentController(
     )
     @GetMapping("/students")
     fun findAll() = studentService.findAll()
+
+    @ApiOperation(
+        value = "학생 단건 저장 API"
+    )
+    @PostMapping("/student")
+    fun save(request: SaveStudentRequest) = studentService.save(request = request)
 
 }

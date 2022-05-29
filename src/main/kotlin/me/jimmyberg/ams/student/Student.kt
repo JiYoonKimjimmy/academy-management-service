@@ -1,18 +1,17 @@
 package me.jimmyberg.ams.student
 
+import me.jimmyberg.ams.Parents.Parents
 import me.jimmyberg.ams.common.BaseEntity
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "STUDENTS")
 class Student(
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    val id: Int,
+    val id: Int? = null,
     @Column(name = "NAME")
     val name: String,
     @Column(name = "MOBILE_NUMBER")
@@ -26,6 +25,23 @@ class Student(
     @Column(name = "GRADE")
     val grade: Char,
     @Column(name = "STATUS")
-    val status: String
+    val status: String = "ACTIVE",
 
-) : BaseEntity()
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    val parents: MutableList<Parents> = mutableListOf()
+
+) : BaseEntity() {
+
+    companion object {
+        fun of(request: SaveStudentRequest) =
+            Student(
+                name = request.name,
+                mobileNumber = request.mobileNumber,
+                dateOfBirth = request.dateOfBirth,
+                gender = request.gender,
+                school = request.school,
+                grade = request.grade
+            )
+    }
+
+}

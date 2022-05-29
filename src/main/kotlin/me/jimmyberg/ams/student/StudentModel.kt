@@ -27,7 +27,7 @@ data class StudentModel(
     companion object {
         fun of(student: Student) =
             StudentModel(
-                id = student.id,
+                id = student.id!!,
                 name = student.name,
                 mobileNumber = student.mobileNumber,
                 dateOfBirth = student.dateOfBirth,
@@ -60,3 +60,19 @@ data class FindStudentsResponse(
         fun of(pageable: Page<StudentModel>) = PageableModel(pageable)
     }
 }
+
+@ApiModel("학생 저장 요청 정보")
+data class SaveStudentRequest(
+    @ApiModelProperty("학생 명", required = true)
+    val name: String,
+    @ApiModelProperty("휴대폰 번호", required = true)
+    val mobileNumber: String,
+    @ApiModelProperty("생년 월일", required = true)
+    val dateOfBirth: String,
+    @ApiModelProperty("성별", required = true)
+    val gender: Char,
+    @ApiModelProperty("학교", required = true)
+    val school: String,
+    @ApiModelProperty("학년", required = true)
+    val grade: Char
+)
