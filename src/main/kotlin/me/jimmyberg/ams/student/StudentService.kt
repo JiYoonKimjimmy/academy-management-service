@@ -1,6 +1,6 @@
 package me.jimmyberg.ams.student
 
-import me.jimmyberg.ams.Parents.Parents
+import me.jimmyberg.ams.parents.Parents
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 

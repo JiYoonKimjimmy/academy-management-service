@@ -1,4 +1,4 @@
-package me.jimmyberg.ams.Parents
+package me.jimmyberg.ams.parents
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import me.jimmyberg.ams.common.BaseEntity

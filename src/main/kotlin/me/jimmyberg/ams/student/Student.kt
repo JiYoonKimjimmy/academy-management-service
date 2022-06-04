@@ -1,6 +1,6 @@
 package me.jimmyberg.ams.student
 
-import me.jimmyberg.ams.Parents.Parents
+import me.jimmyberg.ams.parents.Parents
 import me.jimmyberg.ams.common.BaseEntity
 import javax.persistence.*
 
