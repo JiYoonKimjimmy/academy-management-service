@@ -2,6 +2,7 @@ package me.jimmyberg.ams.student
 
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
+import me.jimmyberg.ams.common.BaseResponse
 import me.jimmyberg.ams.common.PageableModel
 import org.springframework.data.domain.Page
 
@@ -43,7 +44,8 @@ data class StudentModel(
 data class FindStudentResponse(
     @ApiModelProperty("학생 정보", required = true)
     val student: StudentModel
-)
+) : BaseResponse()
+
 @ApiModel("학생 다건 조회 응답 정보")
 data class FindStudentsResponse(
     override val number: Int,

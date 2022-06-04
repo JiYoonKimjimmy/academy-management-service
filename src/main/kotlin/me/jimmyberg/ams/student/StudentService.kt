@@ -1,6 +1,6 @@
 package me.jimmyberg.ams.student
 
-import me.jimmyberg.ams.parents.Parents
+import me.jimmyberg.ams.common.BaseResponse
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
@@ -21,14 +21,8 @@ class StudentService(
             .let { FindStudentsResponse.of(pageable = it) }
 
     fun save(request: SaveStudentRequest) =
-        studentRepository.save(Student.of(request).apply {
-            parents += Parents(
-                id = 2,
-                name = "김아빠2",
-                mobileNumber = "01020326457",
-                gender = 'M',
-                student = this
-            )
-        })
+        studentRepository
+            .save(Student.of(request))
+            .let { BaseResponse.success() }
 
 }
