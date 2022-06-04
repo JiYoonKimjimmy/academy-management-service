@@ -28,7 +28,7 @@ class Student(
     val status: String = "ACTIVE",
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    val parents: MutableList<Parents> = mutableListOf()
+    val parents: List<Parents> = listOf()
 
 ) : BaseEntity() {
 
