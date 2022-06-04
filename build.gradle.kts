@@ -22,7 +22,7 @@ dependencies {
     }
     implementation("org.springframework.boot:spring-boot-starter-undertow:2.6.7")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.7")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
