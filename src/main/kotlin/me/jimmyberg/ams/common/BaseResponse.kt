@@ -5,25 +5,33 @@ import me.jimmyberg.ams.support.enums.BaseStatus
 import org.springframework.data.domain.Page
 
 open class BaseResponse(
-    open val result: Result? = null
+    open var result: Result? = null
 ) {
     data class Result(
         val status: BaseStatus? = null,
         val reason: String? = null,
         val message: String? = null
     )
+
     companion object {
         fun success() = BaseResponse().success()
         fun fail(error: ErrorCode) = BaseResponse().fail(error = error)
     }
-    fun success() = BaseResponse(result = Result(status = BaseStatus.SUCCESS))
-    fun fail(error: ErrorCode) = BaseResponse(
-        result = Result(
-            status = BaseStatus.FAILED,
-            reason = error.code,
-            message = error.message
-        )
-    )
+
+    fun success() =
+        this.apply {
+            result = Result(status = BaseStatus.SUCCESS)
+        }
+
+    fun fail(error: ErrorCode) =
+        this.apply {
+            result = Result(
+                status = BaseStatus.FAILED,
+                reason = error.code,
+                message = error.message
+            )
+        }
+
 }
 
 open class PageableModel<T>(
